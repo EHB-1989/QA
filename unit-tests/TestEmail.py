@@ -13,9 +13,9 @@ class TestIsValidEmail(unittest.TestCase):
 
  def test_invalid_emails(mail):
         
-        invalid_emails = "tata.email.com"
+        invalid_email = "tata.email.com"
 
-        mail.assertFalse(is_valid_email(invalid_emails))
+        mail.assertFalse(is_valid_email(invalid_email))
 
 
 if __name__ == "__main__":
