@@ -3,7 +3,7 @@ from poster import Poster
 
 class DBManager:
     def __init__(self, db_name):
-        self.connection = sqlite3.connect(db_name)
+        self.connection = sqlite3.connect(db_name, check_same_thread=False)
         self.connection.execute('CREATE TABLE IF NOT EXISTS posts (title TEXT, content TEXT)')
         self.connection.commit()
 
