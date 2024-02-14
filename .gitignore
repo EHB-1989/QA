@@ -1,3 +1,5 @@
 test_*
+# except foo.html which is maintained by hand
+!test_integration_commerce_app.py
 __pycache__/
 unit-tests/rectangle.py
