@@ -1,0 +1,27 @@
+from poster import Poster
+from database_manager import DBManager
+
+import unittest
+
+class MyTest(unittest.TestCase):
+    def setUp(self):
+        self.dbm = DBManager("test")
+        self.p1 = Poster("Title1", "blabla")
+        self.p2 = Poster("Title2", "Loreum ipsum")
+
+    def test(self):
+        self.dbm.add_post(self.p1)
+        self.dbm.add_post(self.p2)
+
+        posts = self.dbm.get_posts()
+        self.assertEqual(posts[0].title, "Title1")
+        self.assertEqual(posts[1].title, "Title2")
+
+        self.assertEqual(posts[0].content, "blabla")
+        self.assertEqual(posts[1].content, "Loreum ipsum")
+
+        self.assertEqual(len(posts), 2)
+
+
+if __name__ == '__main__':
+    unittest.main()
