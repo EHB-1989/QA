@@ -23,4 +23,5 @@ class Produit:
         """Calcule le prix du produit après l'application de la remise."""
         prix_apres_remise = self.prix * (1 - self.pourcentage_remise / 100)
         return round(prix_apres_remise, 2)
-
+    
+produit_1 = Produit("pomme", 10, 5)
