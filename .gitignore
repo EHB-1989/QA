@@ -4,5 +4,6 @@ test_*
 !test_integration_reservation_app.py
 !test_integration_post_app.py
 !test_integration_post_api.py
+!test_python_website.py
 
 __pycache__/
