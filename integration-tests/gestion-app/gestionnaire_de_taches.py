@@ -2,7 +2,7 @@ import sqlite3
 
 class GestionnaireDeTaches:
     def __init__(self, db_name):
-        self.conn = sqlite3.connect(db_name)
+        self.conn = sqlite3.connect(db_name, check_same_thread=False)
         self.conn.execute('CREATE TABLE IF NOT EXISTS utilisateurs (email TEXT PRIMARY KEY, nom TEXT)')
         self.conn.execute('CREATE TABLE IF NOT EXISTS taches (titre TEXT, description TEXT, utilisateur_email TEXT, FOREIGN KEY(utilisateur_email) REFERENCES utilisateurs(email))')
         self.conn.commit()
