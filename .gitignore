@@ -2,5 +2,7 @@ test_*
 # except foo.html which is maintained by hand
 !test_integration_commerce_app.py
 !test_integration_reservation_app.py
+!test_integration_post_app.py
+!test_integration_post_api.py
 
 __pycache__/
