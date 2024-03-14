@@ -13,3 +13,4 @@ test_python_website.py
 !test_e2e_events_page.py
 
 __pycache__/
+env/
