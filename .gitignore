@@ -1,9 +1,14 @@
 test_*
+optimised_*
+locustfile*
+test_python_website.py
 # except foo.html which is maintained by hand
 !test_integration_commerce_app.py
 !test_integration_reservation_app.py
 !test_integration_post_app.py
 !test_integration_post_api.py
 !test_python_website.py
+!performance-tests/exemple_1/locustfile.py
+!test_google_search.py
 
 __pycache__/
