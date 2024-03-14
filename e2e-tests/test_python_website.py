@@ -6,7 +6,8 @@ import time
 driver = webdriver.Firefox()
 driver.get("http://www.python.org")
 time.sleep(10)
-search_box = driver.find_element(By.NAME, "q")
+search_box =driver.find_element(By.XPATH)
+#search_box = driver.find_element(By.NAME, "q")
 
 search_box.send_keys("python")
 search_box.send_keys(Keys.RETURN)
