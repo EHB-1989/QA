@@ -1,5 +1,4 @@
 test_*
-optimised_*
 test_python_website.py
 # except foo.html which is maintained by hand
 !test_integration_commerce_app.py
