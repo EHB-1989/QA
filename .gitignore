@@ -13,5 +13,6 @@ test_python_website.py
 !test_e2e_events_page.py
 !performance-tests/search_product/optimised_app.py
 !performance-tests/search_product/locustfile.py
-
+!performance-tests/weather_app/locustfile.py
+!performance-tests/weather_app/optimised_app.py
 __pycache__/
