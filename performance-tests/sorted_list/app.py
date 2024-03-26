@@ -9,6 +9,7 @@ def sort_numbers():
     for number in data:
         sorted_list.append(number)
         sorted_list = sorted(sorted_list)
+        print(sorted_list)
     return jsonify(sorted_list)
 
 if __name__ == '__main__':
