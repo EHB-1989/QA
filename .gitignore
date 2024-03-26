@@ -8,5 +8,13 @@ test_python_website.py
 !test_integration_post_app.py
 !test_integration_post_api.py
 !test_python_website.py
+<<<<<<< HEAD
+=======
+!performance-tests/exemple_1/locustfile.py
+!test_google_search.py
+!test_e2e_events_page.py
+!performance-tests/search_product/optimised_app.py
+!performance-tests/search_product/locustfile.py
+>>>>>>> main
 
 __pycache__/
