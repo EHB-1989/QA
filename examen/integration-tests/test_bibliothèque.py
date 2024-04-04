@@ -9,7 +9,6 @@ from database_manager import init_db, get_livres_db
 class TestIntegration(unittest.TestCase):
 
     def setUp(self):
-        
         init_db()
 
     def test_ajouter_livre(self):
@@ -19,7 +18,6 @@ class TestIntegration(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.json()['message'], 'Livre ajouté avec succès')
 
-       
         livres = get_livres_db()
         self.assertEqual(len(livres), livre_number+1)
         self.assertEqual(livres[-1]['titre'], 'Le Seigneur des Anneaux')
@@ -27,7 +25,7 @@ class TestIntegration(unittest.TestCase):
         self.assertFalse(livres[-1]['est_emprunte'])
 
 def test_emprunter_livre(self):
-   
+    
     data = {'titre': 'Le Petit Prince'}
     response = requests.post('http://localhost:5000/emprunter', json=data)
     self.assertEqual(response.status_code, 200)
@@ -39,7 +37,6 @@ def test_emprunter_livre(self):
     data = {'titre': 'Le Petit Prince'}
     response = requests.post('http://localhost:5000/retourner', json=data)
 
-
     data = {'titre': 'Le Petit Prince'}
     response = requests.post('http://localhost:5000/emprunter', json=data)
     self.assertEqual(response.status_code, 404)
@@ -47,22 +44,20 @@ def test_emprunter_livre(self):
 
 
 def test_retourner_livre(self):
+    
         data = {'titre': 'Le Petit Prince'}
         response = requests.post('http://localhost:5000/retourner', json=data)
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.json()['message'], 'Livre non trouvé ou déjà retourné')
 
-
         response = requests.post('http://localhost:5000/emprunter', json=data)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['message'], 'Livre emprunté avec succès')
-
 
         response = requests.post('http://localhost:5000/retourner', json=data)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['message'], 'Livre retourné avec succès')
 
- 
         livres = get_livres_db()
         self.assertFalse(livres[1]['est_emprunte'])
 
