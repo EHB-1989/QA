@@ -3,8 +3,7 @@ from app import Livre,Bibliotheque
 
 
 class TestLivre(unittest.TestCase):
-    def setUp(self):
-        self.livre = Livre("1984", "George Orwell")
+    livre = Livre("Naruto", "Masashi Kishimoto")
 
     def test_emprunter(self):
         self.assertTrue(self.livre.emprunter())
