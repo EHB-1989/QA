@@ -8,7 +8,7 @@ from database_manager import init_db, get_livres_db
 
 class TestIntegration(unittest.TestCase):
 
-    def setUp(self):
+    def Initialisation(self):
         init_db()
 
     def test_ajouter_livre(self):
