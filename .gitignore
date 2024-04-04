@@ -1,8 +1,7 @@
 test_*
 optimised_*
-locustfile*
+
 test_python_website.py
-explication.md
 # except foo.html which is maintained by hand
 !test_integration_commerce_app.py
 !test_integration_reservation_app.py
