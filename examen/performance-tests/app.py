@@ -1,8 +1,12 @@
 from flask import Flask, jsonify
+from flask_caching import Cache
 import time
 
 app = Flask(__name__)
+app.config['CACHE_TYPE'] = 'simple'
+cache = Cache(app)
 
+@cache.memoize(timeout=60)
 # Simulation d'une base de données avec un délai
 def get_user_from_db(user_id):
     time.sleep(2)  # Simule le temps de réponse de la base de données
