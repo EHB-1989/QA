@@ -1,0 +1,7 @@
+locustfile.py:
+    test de performance pour récupérer 10 utilisateurs avec dans la base de donnée artificiellement lente.
+    
+    resultat : temps de réponse moyen de 2sec, donc plutot lent, nous allons l'optimiser
+
+app2.py :
+    tentative d'optimisation de l'application avec un ajout de système de cache pour eviter de recharger a nouveaux les utilisateurs deja chargé une fois
