@@ -2,6 +2,7 @@ test_*
 optimised_*
 locustfile*
 test_python_website.py
+old_*
 # except foo.html which is maintained by hand
 **/test_compte_bancaire.py
 unit-tests/test_email_validation.py
