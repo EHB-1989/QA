@@ -16,3 +16,16 @@ class CompteBancaire:
 
     def get_solde(self):
         return self.solde
+
+def test_CompteBancaire():
+    compte=CompteBancaire(100)
+    assert compte.get_solde() == 100
+    assert compte.retrait(-50) == False
+    assert compte.retrait(150) == False
+    assert compte.retrait(100) == True
+    assert compte.get_solde() == 0
+    assert compte.depot(-50) == False
+    assert compte.depot(50) == True
+
+test_CompteBancaire()
+    
