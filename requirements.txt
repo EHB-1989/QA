@@ -10,16 +10,36 @@ attrs==25.1.0
     #   trio
 black==24.10.0
     # via unittest1 (pyproject.toml)
+blinker==1.9.0
+    # via flask
 certifi==2024.12.14
-    # via selenium
+    # via
+    #   requests
+    #   selenium
+charset-normalizer==3.4.1
+    # via requests
 click==8.1.8
-    # via black
+    # via
+    #   black
+    #   flask
+flask==3.1.0
+    # via unittest1 (pyproject.toml)
 h11==0.14.0
     # via wsproto
 idna==3.10
-    # via trio
+    # via
+    #   requests
+    #   trio
 iniconfig==2.0.0
     # via pytest
+itsdangerous==2.2.0
+    # via flask
+jinja2==3.1.5
+    # via flask
+markupsafe==3.0.2
+    # via
+    #   jinja2
+    #   werkzeug
 mypy-extensions==1.0.0
     # via black
 outcome==1.3.0.post0
@@ -38,6 +58,8 @@ pysocks==1.7.1
     # via urllib3
 pytest==8.3.4
     # via unittest1 (pyproject.toml)
+requests==2.32.3
+    # via unittest1 (pyproject.toml)
 ruff==0.9.3
     # via unittest1 (pyproject.toml)
 selenium==4.28.1
@@ -55,8 +77,12 @@ trio-websocket==0.11.1
 typing-extensions==4.12.2
     # via selenium
 urllib3[socks]==2.3.0
-    # via selenium
+    # via
+    #   requests
+    #   selenium
 websocket-client==1.8.0
     # via selenium
+werkzeug==3.1.3
+    # via flask
 wsproto==1.2.0
     # via trio-websocket
