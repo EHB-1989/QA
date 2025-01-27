@@ -8,7 +8,6 @@
 #     def calculer_total(self):
 #         return sum(produit.prix for produit in self.produits)
 
-
 class Panier:
     def __init__(self):
         # Utilise un dictionnaire pour stocker les produits et leurs quantités
