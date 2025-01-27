@@ -5,8 +5,8 @@ test_python_website.py
 old_*
 # except foo.html which is maintained by hand
 **/test_compte_bancaire.py
-unit-tests/test_email_validation.py
-unit-tests/test_inventaire.py
+unit_tests/test_email_validation.py
+unit_tests/test_inventaire.py
 
 test_integration_commerce_app.py
 test_integration_reservation_app.py
@@ -25,3 +25,6 @@ performance-tests/finance-app/locustfile.py
 performance-tests/finance-app/optimised_app.py
 __pycache__/
 env
+
+venv/
+.idea/

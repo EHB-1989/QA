@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "unittest1"
+version = "0.1.0"
+description = ""
+authors = [
+  { name = "Tomy Da Rocha", email = "t@t.fr" },
+]
+license = "MIT"
+dependencies = [
+    "selenium",
+    "flask",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "ruff",
+]
