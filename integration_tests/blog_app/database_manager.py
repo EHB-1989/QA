@@ -1,5 +1,5 @@
 import sqlite3
-from poster import Poster
+from .poster import Poster
 
 class DBManager:
     def __init__(self, db_name):
