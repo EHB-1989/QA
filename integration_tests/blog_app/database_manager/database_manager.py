@@ -1,5 +1,7 @@
+#database_manager.py
+
 import sqlite3
-from poster import Poster
+from integration_tests.blog_app.poster import Poster
 
 class DBManager:
     def __init__(self, db_name):
