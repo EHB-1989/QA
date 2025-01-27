@@ -22,7 +22,9 @@ class Panier:
             else:
                 self.produits[produit] = quantite
         else:
-            print(f"Impossible d'ajouter {quantite} de {produit.nom} en raison du stock insuffisant.")
+            print(
+                f"Impossible d'ajouter {quantite} de {produit.nom} en raison du stock insuffisant."
+            )
 
     def calculer_total(self):
         total = 0
