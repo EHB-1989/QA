@@ -1,3 +1,6 @@
+import unittest
+
+
 class CompteBancaire:
     def __init__(self, solde_initial=0):
         self.solde = solde_initial
@@ -18,13 +21,45 @@ class CompteBancaire:
         return self.solde
 
 
-if __name__ == "__main__":
-    print("Début des tets")
+class TestCompteBancaire(unittest.TestCase):
+    def setUp(self):
+        self.cb = CompteBancaire()
 
-    compte = CompteBancaire()
-    print(compte.get_solde)
-    assert compte.get_solde() == 0, "Echec le solde initial n'est pas zéro"
-    compte.depot(10)
-    assert compte.get_solde() == 10, "Le solde doit être de 10"
-    compte.retrait(10)
-    assert compte.get_solde() == 0, "Le solde doit être de 0"
+    def test_depot(self):
+        self.assertTrue(self.cb.depot(10), "Le dépôt de 10 euros devraît être réussi")
+        self.assertEqual(self.cb.get_solde(), 10, "Le solde devraît être à 10 euros")
+        self.assertFalse(
+            self.cb.depot(-10), "Le dépôt de -10 euros ne devraît pas être possible"
+        )
+        self.assertEqual(
+            self.cb.get_solde(), 10, "Le solde devraît être encore à 10 euros"
+        )
+
+    def test_retrait(self):
+        self.cb.depot(20)
+        self.assertTrue(
+            self.cb.retrait(10), "Le retrait de 10 euros devraît être réussi"
+        )
+        self.assertEqual(
+            self.cb.get_solde(), 10, "Le solde devraît être à 10 euros après retrait"
+        )
+        self.assertFalse(
+            self.cb.retrait(20),
+            "Le retrait de 20 euros ne devraît pas être possible avec 10 euros de solde",
+        )
+        self.assertEqual(
+            self.cb.get_solde(),
+            10,
+            "Le solde devraît être encore à 10 euros après tentative de retrait",
+        )
+
+    def test_solde_initial(self):
+        self.assertEqual(self.cb.get_solde(), 0, "Le solde initial devraît être zéro")
+        self.cb.depot(100)
+        self.assertEqual(
+            self.cb.get_solde(), 100, "Le solde devraît être 100 euros après dépôt"
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()
