@@ -16,3 +16,15 @@ class CompteBancaire:
 
     def get_solde(self):
         return self.solde
+
+
+if __name__ == "__main__":
+    print("Début des tets")
+
+    compte = CompteBancaire()
+    print(compte.get_solde)
+    assert compte.get_solde() == 0, "Echec le solde initial n'est pas zéro"
+    compte.depot(10)
+    assert compte.get_solde() == 10, "Le solde doit être de 10"
+    compte.retrait(10)
+    assert compte.get_solde() == 0, "Le solde doit être de 0"
