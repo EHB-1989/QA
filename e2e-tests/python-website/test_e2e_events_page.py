@@ -22,11 +22,11 @@ try:
     time.sleep(2)
 
     # Sélectionner un événement Python spécifique en cliquant sur son lien
-    event_link = driver.find_element(By.LINK_TEXT, "PyCon SK 2024")
+    event_link = driver.find_element(By.LINK_TEXT, "PyConf Hyderabad 2025")
     event_link.click()
 
     # Vérifier que nous sommes sur la page de l'événement sélectionné
-    assert "PyCon SK 2024" in driver.title
+    assert "PyConf Hyderabad 2025" in driver.title
 
     # Attendre quelques secondes pour examiner manuellement la page avant de la fermer
     time.sleep(5)
