@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
-from utilisateur import Utilisateur
-from tache import Tache
-from gestionnaire_de_taches import GestionnaireDeTaches
+from integration_tests.gestion_app.utilisateur import Utilisateur
+from integration_tests.gestion_app.tache import Tache
+from integration_tests.gestion_app.gestionnaire_de_taches import GestionnaireDeTaches
 
 app = Flask(__name__)
 gestionnaire = GestionnaireDeTaches('taches.db')
