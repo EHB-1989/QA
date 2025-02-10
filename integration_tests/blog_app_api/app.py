@@ -1,10 +1,9 @@
 #app.py
 from flask import Flask, request, jsonify
 from integration_tests.blog_app_api.poster import Poster
-from integration_tests.blog_app_api.database_manager import DBManager
-
+from integration_tests.blog_app_api.database_manager import DBManager   
 app = Flask(__name__)
-db_manager = DBManager('blog.db')  # Nom de la base de données réelle pour l'exemple
+db_manager = DBManager('blog.db')  
 
 @app.route('/posts', methods=['POST'])
 def create_post():
@@ -18,5 +17,7 @@ def get_posts():
     posts = db_manager.get_posts()
     return jsonify([{"title": post.title, "content": post.content} for post in posts])
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
+
