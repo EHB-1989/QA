@@ -25,3 +25,4 @@ performance-tests/finance-app/locustfile.py
 performance-tests/finance-app/optimised_app.py
 __pycache__/
 env
+*.db
