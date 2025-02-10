@@ -19,5 +19,10 @@ class GestionnaireDeTaches:
         cursor = self.conn.execute('SELECT titre, description FROM taches WHERE utilisateur_email = ?', (utilisateur_email,))
         return [{"titre": row[0], "description": row[1]} for row in cursor]
 
+    def vider_bd(self):
+        self.conn.execute('DELETE FROM taches')
+        self.conn.execute('DELETE FROM utilisateurs')
+        self.conn.commit()
+
     def __del__(self):
         self.conn.close()
