@@ -8,6 +8,8 @@ import time
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 # db = SQLAlchemy(app)
 
+# Implémenter un scénario de test de performance en utilisant locust 
+
 app = Flask(__name__)
 db_manager = DBManager("items.db")  # Nom de la base de données réelle pour l'exemple
 
