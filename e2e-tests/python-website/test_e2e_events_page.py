@@ -1,15 +1,20 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 import time
 
+service = Service()
+options = webdriver.ChromeOptions()
 # Initialisation du navigateur
-driver = webdriver.Firefox()
+driver = webdriver.Chrome(service=service, options=options)
 
 try:
     # Navigation vers la page d'accueil de Python.org
     driver.get("https://www.python.org/")
+
+    time.sleep(3)
 
     # Accéder à la section des événements
     events_link = driver.find_element(By.XPATH, '//li[@id="events"]/a')
@@ -19,17 +24,17 @@ try:
 
     
     # Attendre que la page des événements se charge
-    time.sleep(2)
+    time.sleep(3)
 
     # Sélectionner un événement Python spécifique en cliquant sur son lien
-    event_link = driver.find_element(By.LINK_TEXT, "PyCon SK 2024")
+    event_link = driver.find_element(By.LINK_TEXT, "PyCon Sweden")
     event_link.click()
 
     # Vérifier que nous sommes sur la page de l'événement sélectionné
-    assert "PyCon SK 2024" in driver.title
+    assert "PyCon Sweden" in driver.title
 
     # Attendre quelques secondes pour examiner manuellement la page avant de la fermer
-    time.sleep(5)
+    time.sleep(20)
 
 finally:
     # Fermer le navigateur
