@@ -6,11 +6,11 @@ setuptools is bootstrapped via import.
 # Note that setuptools gets imported implicitly by the
 # invocation of this script using python -m setuptools.launch
 
-import tokenize
 import sys
+import tokenize
 
 
-def run():
+def run() -> None:
     """
     Run the script in sys.argv[1] as if it had
     been invoked naturally.
@@ -25,7 +25,8 @@ def run():
     sys.argv[:] = sys.argv[1:]
 
     open_ = getattr(tokenize, 'open', open)
-    script = open_(script_name).read()
+    with open_(script_name) as fid:
+        script = fid.read()
     norm_script = script.replace('\\r\\n', '\\n')
     code = compile(norm_script, script_name, 'exec')
     exec(code, namespace)
