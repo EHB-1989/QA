@@ -1,36 +1,40 @@
-
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
+import unittest
 
-# Initialisation du navigateur
-driver = webdriver.Firefox()
 
-try:
-    # Navigation vers la page d'accueil de Python.org
-    driver.get("https://www.python.org/")
+class BlogAppTest(unittest.TestCase):
 
-    # Accéder à la section des événements
-    events_link = driver.find_element(By.XPATH, '//li[@id="events"]/a')
-    events_link.click()
+    def setUp(self):
+        self.browser = webdriver.Firefox()
 
-    # verifier qu'on est sur la pages des evenements
+    def tearDown(self):
+        self.browser.quit()
 
-    
-    # Attendre que la page des événements se charge
-    time.sleep(2)
+    def test_blog_app(self):
+        self.browser.get("http://localhost:5000/create")
 
-    # Sélectionner un événement Python spécifique en cliquant sur son lien
-    event_link = driver.find_element(By.LINK_TEXT, "PyCon SK 2024")
-    event_link.click()
+        title_input = self.browser.find_element(By.NAME, "title")
+        title_input.send_keys("Baptiste article")
 
-    # Vérifier que nous sommes sur la page de l'événement sélectionné
-    assert "PyCon SK 2024" in driver.title
+        content_input = self.browser.find_element(By.NAME, "content")
+        content_input.send_keys("this is a test article for the blog app")
 
-    # Attendre quelques secondes pour examiner manuellement la page avant de la fermer
-    time.sleep(5)
+        submit_button = self.browser.find_element(By.XPATH, "//input[@type='submit']")
+        submit_button.click()
+        time.sleep(3)
 
-finally:
-    # Fermer le navigateur
-    driver.quit()
+        content = self.browser.find_element(By.XPATH, "//p")
+        self.assertIn("this is a test article for the blog app", content.text)
+
+        title = self.browser.find_element(By.XPATH, "//h2")
+        self.assertIn("Baptiste article", title.text)
+
+
+        print("Test passed")
+        time.sleep(3)
+
+
+if __name__ == "__main__":
+    unittest.main()
