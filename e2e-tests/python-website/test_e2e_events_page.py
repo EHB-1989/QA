@@ -9,7 +9,7 @@ driver = webdriver.Firefox()
 
 try:
     # Navigation vers la page d'accueil de Python.org
-    driver.get("https://www.python.org/")
+    driver.get("https://www.atom.com")
 
     # Accéder à la section des événements
     events_link = driver.find_element(By.XPATH, '//li[@id="events"]/a')
