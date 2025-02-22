@@ -11,6 +11,8 @@ def home():
 @app.route("/api/data")
 def get_data():
     data = {"key": "value", "number": 42, "message": "Ceci est un test de performance."}
+    for i in range(1000):
+        print(i)
     return jsonify(data)
 
 
