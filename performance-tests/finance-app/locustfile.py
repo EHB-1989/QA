@@ -6,3 +6,7 @@ class FinancialReportUser(HttpUser):
     @task
     def get_financial_report(self):
         self.client.get("/financial_report/123")
+
+    @task 
+    def get_financial_report(self):
+        self.client.get("/financial_report/456")

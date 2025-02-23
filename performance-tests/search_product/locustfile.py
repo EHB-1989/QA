@@ -7,3 +7,8 @@ class ProductSearchUser(HttpUser):
     def search_products(self):
         # Effectue une recherche pour des termes communs
         self.client.get("/search?query=phone")
+
+    @task
+    def search_products_rare(self):
+        # Effectue une recherche pour des termes rares
+        self.client.get("/search?query=abracadabra")
