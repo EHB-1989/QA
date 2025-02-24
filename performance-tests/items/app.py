@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from item import Item
 from database_manager import DBManager
-from flask_sqlalchemy import SQLAlchemy
+#from flask_sqlalchemy import SQLAlchemy
 import time
 
 # app = Flask(__name__)

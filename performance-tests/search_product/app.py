@@ -17,5 +17,12 @@ def search():
     filtered_products = [product for product in all_products if query.lower() in product.name.lower()]
     return jsonify([{'id': product.id, 'name': product.name} for product in filtered_products])
 
+@app.route('/search_optimized', methods=['GET'])
+def search_optimized():
+    query = request.args.get('query')
+    # Utilise une requête SQL pour filtrer les produits
+    filtered_products = Product.query.filter(Product.name.ilike(f'%{query}%')).all()
+    return jsonify([{'id': product.id, 'name': product.name} for product in filtered_products])
+
 if __name__ == '__main__':
     app.run(debug=True)
