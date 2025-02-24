@@ -5,7 +5,6 @@ app = Flask(__name__)
 
 # Simulation d'une base de données avec un délai
 def get_user_from_db(user_id):
-    time.sleep(2)  # Simule le temps de réponse de la base de données
     return {"id": user_id, "name": "User " + str(user_id), "email": "user" + str(user_id) + "@example.com"}
 
 @app.route('/user/<int:user_id>')
