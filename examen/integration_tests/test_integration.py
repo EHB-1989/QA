@@ -8,14 +8,14 @@ class TestBibliothequeIntegration(unittest.TestCase):
     
     @classmethod
     def setUpClass(cls):
-        """Configuration initiale : utilisation d'une base de test."""
+        """Configuration of the test environment."""
         app.config['TESTING'] = True
         app.config['DATABASE'] = TEST_DB
         cls.client = app.test_client()
         init_db()
     
     def setUp(self):
-        """Réinitialise la base avant chaque test."""
+        """Reset the database before each test."""
         with get_db_connection() as conn:
             conn.execute('DELETE FROM livres')
             conn.executemany('INSERT INTO livres (titre, auteur, est_emprunte) VALUES (?, ?, ?)', [
@@ -23,44 +23,44 @@ class TestBibliothequeIntegration(unittest.TestCase):
                 ('Dragon Ball', 'Akira Toriyama', False)
             ])
     
-    def test_ajouter_livre(self):
+    def test_add_book(self):
         response = self.client.post('/ajouter', json={
             'titre': 'One Piece', 'auteur': 'Eiichirō Oda'
         })
         self.assertEqual(response.status_code, 201)
         self.assertIn('Livre ajouté avec succès', response.get_json()['message'])
     
-    def test_lister_livres(self):
+    def test_list_books(self):
         response = self.client.get('/livres')
         self.assertEqual(response.status_code, 200)
         livres = response.get_json()
         self.assertGreaterEqual(len(livres), 2)
     
-    def test_emprunter_livre_succes(self):
+    def test_borrow_book_success(self):
         response = self.client.post('/emprunter', json={'titre': 'Naruto'})
         self.assertEqual(response.status_code, 200)
         self.assertIn('Livre emprunté avec succès', response.get_json()['message'])
     
-    def test_emprunter_livre_deja_emprunte(self):
+    def test_borrow_book_already_borrowed(self):
         self.client.post('/emprunter', json={'titre': 'Naruto'})
         response = self.client.post('/emprunter', json={'titre': 'Naruto'})
         self.assertEqual(response.status_code, 404)
         self.assertIn('Livre non disponible', response.get_json()['message'])
     
-    def test_retourner_livre_succes(self):
+    def test_return_book_success(self):
         self.client.post('/emprunter', json={'titre': 'Dragon Ball'})
         response = self.client.post('/retourner', json={'titre': 'Dragon Ball'})
         self.assertEqual(response.status_code, 200)
         self.assertIn('Livre retourné avec succès', response.get_json()['message'])
     
-    def test_retourner_livre_non_emprunte(self):
+    def test_return_book_not_borrowed(self):
         response = self.client.post('/retourner', json={'titre': 'Naruto'})
         self.assertEqual(response.status_code, 404)
         self.assertIn('Livre non trouvé ou déjà retourné', response.get_json()['message'])
     
     @classmethod
     def tearDownClass(cls):
-        """Nettoyage final."""
+        """Clean up : delete the test database."""
         if os.path.exists(TEST_DB):
             os.remove(TEST_DB)
 
