@@ -1,3 +1,5 @@
+import unittest
+
 class Livre:
     def __init__(self, titre, auteur):
         self.titre = titre
@@ -39,38 +41,61 @@ class Bibliotheque:
                 return True
         return False
 
-def test_livre():
-    livre = Livre("Harry Potter", "J.K. Rowling")
-    assert livre.titre == "Harry Potter"
-    assert livre.auteur == "J.K. Rowling"
-    assert not livre.est_emprunte # Le livre ne doit pas être emprunté puisque l'on vient de le créer
-    assert livre.emprunter() # On vérifie si l'emprunt du livre retourne True
-    assert livre.est_emprunte # on vérifie que le livre est bien considéré comme emprunté
-    assert not livre.emprunter() # Le livre est déjà emprunté, on ne peut donc pas l'emprunter une deuxième fois
-    assert livre.retourner() # On vérifie si le retour du livre retourne True
-    assert not livre.est_emprunte # on vérifie que le livre est bien considéré comme non emprunté
-    assert not livre.retourner() # Le livre n'est pas emprunté, on ne peut donc pas le retourner
-    
-def test_bibliotheque():
-    bibliotheque = Bibliotheque()
-    livre1 = Livre("Harry Potter", "J.K. Rowling")
-    livre2 = Livre("Le Seigneur des Anneaux", "J.R.R. Tolkien")
-    bibliotheque.ajouter_livre(livre1)
-    bibliotheque.ajouter_livre(livre2)
-    assert bibliotheque.emprunter_livre("Harry Potter") # On vérifie si l'emprunt du livre retourne True
-    assert not bibliotheque.emprunter_livre("Harry Potter") # Le livre est déjà emprunté, on ne peut donc pas l'emprunter une deuxième fois
-    assert bibliotheque.emprunter_livre("Le Seigneur des Anneaux") # On vérifie si l'emprunt du livre retourne True
-    assert not bibliotheque.emprunter_livre("Le Seigneur des Anneaux") # Le livre est déjà emprunté, on ne peut donc pas l'emprunter une deuxième fois
-    assert bibliotheque.retourner_livre("Harry Potter") # On vérifie si le retour du livre retourne True
-    assert not bibliotheque.retourner_livre("Harry Potter") # Le livre n'est pas emprunté, on ne peut donc pas le retourner
-    assert bibliotheque.retourner_livre("Le Seigneur des Anneaux") # On vérifie si le retour du livre retourne True
-    assert not bibliotheque.retourner_livre("Le Seigneur des Anneaux") # Le livre n'est pas emprunté, on ne peut donc pas le retourner
-    
-    assert not bibliotheque.emprunter_livre("inexistant") # le livre n'existe pas, on ne peut donc pas l'emprunter
-    assert not bibliotheque.retourner_livre("inexistant") # le livre n'existe pas, on ne peut donc pas le retourner
-    
+class TestLivre(unittest.TestCase):
+    def setUp(self):
+        self.livre = Livre("Harry Potter", "J.K. Rowling")
+
+    def test_initialisation(self):
+        self.assertEqual(self.livre.titre, "Harry Potter")
+        self.assertEqual(self.livre.auteur, "J.K. Rowling")
+        self.assertFalse(self.livre.est_emprunte)
+
+    def test_emprunter(self):
+        # Le livre n'est pas emprunté au départ, l'emprunt doit réussir.
+        self.assertTrue(self.livre.emprunter())
+        self.assertTrue(self.livre.est_emprunte)
+        # Un second emprunt doit échouer.
+        self.assertFalse(self.livre.emprunter())
+
+    def test_retourner(self):
+        # Si le livre n'est pas emprunté, le retour échoue.
+        self.assertFalse(self.livre.retourner())
+        # Après emprunt, le retour doit réussir.
+        self.livre.emprunter()
+        self.assertTrue(self.livre.retourner())
+        self.assertFalse(self.livre.est_emprunte)
+        # Un second retour doit échouer.
+        self.assertFalse(self.livre.retourner())
+
+class TestBibliotheque(unittest.TestCase):
+    def setUp(self):
+        self.bibliotheque = Bibliotheque()
+        self.livre1 = Livre("Harry Potter", "J.K. Rowling")
+        self.livre2 = Livre("Le Seigneur des Anneaux", "J.R.R. Tolkien")
+        self.bibliotheque.ajouter_livre(self.livre1)
+        self.bibliotheque.ajouter_livre(self.livre2)
+
+    def test_emprunter_livre(self):
+        # Emprunter "Harry Potter" doit réussir la première fois et échouer ensuite.
+        self.assertTrue(self.bibliotheque.emprunter_livre("Harry Potter"))
+        self.assertFalse(self.bibliotheque.emprunter_livre("Harry Potter"))
+        # Même chose pour "Le Seigneur des Anneaux".
+        self.assertTrue(self.bibliotheque.emprunter_livre("Le Seigneur des Anneaux"))
+        self.assertFalse(self.bibliotheque.emprunter_livre("Le Seigneur des Anneaux"))
+
+    def test_retourner_livre(self):
+        # Emprunter les livres pour ensuite les retourner.
+        self.bibliotheque.emprunter_livre("Harry Potter")
+        self.bibliotheque.emprunter_livre("Le Seigneur des Anneaux")
+        self.assertTrue(self.bibliotheque.retourner_livre("Harry Potter"))
+        self.assertFalse(self.bibliotheque.retourner_livre("Harry Potter"))
+        self.assertTrue(self.bibliotheque.retourner_livre("Le Seigneur des Anneaux"))
+        self.assertFalse(self.bibliotheque.retourner_livre("Le Seigneur des Anneaux"))
+
+    def test_livre_inexistant(self):
+        # Tenter d'emprunter ou retourner un livre inexistant doit renvoyer False.
+        self.assertFalse(self.bibliotheque.emprunter_livre("inexistant"))
+        self.assertFalse(self.bibliotheque.retourner_livre("inexistant"))
     
 if __name__ == '__main__':
-    test_livre()
-    test_bibliotheque()
-    print("Tous les tests passent")
+    unittest.main()
