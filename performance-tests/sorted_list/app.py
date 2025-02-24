@@ -11,5 +11,11 @@ def sort_numbers():
         sorted_list = sorted(sorted_list)
     return jsonify(sorted_list)
 
+@app.route('/sort_optimised', methods=['POST'])
+def sort_numbers_optimised():
+    data = request.get_json().get('numbers', [])
+    sorted_list = sorted(data)
+    return jsonify(sorted_list)
+
 if __name__ == '__main__':
     app.run(debug=True)
