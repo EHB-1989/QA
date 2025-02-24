@@ -14,6 +14,10 @@ dependencies = [
     "selenium",
     "flask",
     "requests",
+    "flask_sqlalchemy",
+    "locust",
+    "gunicorn",
+    "waitress",
 ]
 
 [project.optional-dependencies]
