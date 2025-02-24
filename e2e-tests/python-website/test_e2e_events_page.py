@@ -17,12 +17,12 @@ try:
 
     # verifier qu'on est sur la pages des evenements
 
-    
+
     # Attendre que la page des événements se charge
     time.sleep(2)
 
     # Sélectionner un événement Python spécifique en cliquant sur son lien
-    event_link = driver.find_element(By.LINK_TEXT, "PyCon SK 2024")
+    event_link = driver.find_element(By.LINK_TEXT, "PyCon Sweden")
     event_link.click()
 
     # Vérifier que nous sommes sur la page de l'événement sélectionné
