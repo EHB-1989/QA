@@ -1,11 +1,6 @@
-from flask import request, jsonify
+from flask import Flask, request, jsonify
 from database_manager import Product, app
-
-
-# app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///products.db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# db = SQLAlchemy(app)
+from flask_sqlalchemy import SQLAlchemy
 
 
 @app.route("/search", methods=["GET"])

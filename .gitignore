@@ -1,8 +1,5 @@
 env
 *.db
 *.log
-examen/*
-examen/
-examen
 __pycache__
 __pycache__/

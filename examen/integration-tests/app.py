@@ -1,4 +1,16 @@
 # app.py
+
+#!/usr/bin/env python3
+# -*-coding:utf-8 -*-
+"""
+@File    :   locustfile.py
+@Time    :   2025/02/24
+@Author  :   FOURMONT Baptiste
+@Version :   1.0
+@Contact :   baptiste_fourmont@tutanota.com
+@Desc    :   None
+"""
+
 from flask import Flask, request, jsonify
 from database_manager import (
     init_db,
