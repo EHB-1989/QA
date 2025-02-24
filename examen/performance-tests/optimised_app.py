@@ -9,16 +9,14 @@
 @Desc    :   None
 '''
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_caching import Cache
 import time
 
 app = Flask(__name__)
-app.config["CACHE_TYPE"] = "simple"
 cache = Cache(app)
 
 def get_user_from_db(user_id):
-    time.sleep(2)  # Simule le temps de réponse de la base de données
     user = {
         "id": user_id,
         "name": "User " + str(user_id),
@@ -28,10 +26,13 @@ def get_user_from_db(user_id):
 
 
 @app.route("/user/<int:user_id>")
-@cache.cached(timeout=3600, key_prefix="user_id_")
 def get_user(user_id):
-    user = get_user_from_db(user_id)
+    user = cache.get(str(user_id))
+    if user is None:
+        user = get_user_from_db(user_id)
+        cache.set(str(user_id), user, timeout=3600)
     return jsonify(user)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
