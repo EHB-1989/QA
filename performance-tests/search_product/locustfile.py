@@ -7,3 +7,8 @@ class ProductSearchUser(HttpUser):
     def search_products(self):
         # Effectue une recherche pour des termes communs
         self.client.get("/search?query=phone")
+
+
+        from locust import HttpUser, task, between
+
+
