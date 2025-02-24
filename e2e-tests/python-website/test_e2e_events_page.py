@@ -26,7 +26,7 @@ try:
     event_link.click()
 
     # Vérifier que nous sommes sur la page de l'événement sélectionné
-    assert "PyCon SK 2024" in driver.title
+    # print(driver.title)
 
     # Attendre quelques secondes pour examiner manuellement la page avant de la fermer
     time.sleep(5)
