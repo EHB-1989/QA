@@ -1,6 +1,8 @@
 # QA
 This repo contains all the tests example and exercises used in QA training: unit tests, integration tests,e2e,... 
 
+baptiste_fourmont@tutanota.com
+
 ## Tests de performance
 
 1. Créer un fichier Python pour le script de test locustfile.py
