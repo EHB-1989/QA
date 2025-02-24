@@ -35,7 +35,7 @@ class PythonDocumentationTest(unittest.TestCase):
         beginners_guide_link.click()
         time.sleep(2)  
 
-        # Finnaly, I check if the url and title contain "BeginnersGuide"
+        # Finally, I check if the url and title contain "BeginnersGuide"
         self.assertIn("BeginnersGuide", self.browser.current_url)
         self.assertIn("BeginnersGuide", self.browser.title)
         print("Test passed successfully we are on the Beginners Guide page !")
