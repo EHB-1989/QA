@@ -1,8 +1,4 @@
-test_*
-optimised_*
-locustfile*
-test_python_website.py
-old_*
+
 # except foo.html which is maintained by hand
 **/test_compte_bancaire.py
 unit-tests/test_email_validation.py
@@ -18,7 +14,7 @@ performance-tests/exemple_1/locustfile.py
 test_google_search.py
 test_e2e_events_page.py
 performance-tests/search_product/optimised_app.py
-performance-tests/search_product/locustfile.py
+performance-tests/search_product/locustfile_old.py
 performance-tests/weather_app/locustfile.py
 performance-tests/weather_app/optimised_app.py
 performance-tests/finance-app/locustfile.py
