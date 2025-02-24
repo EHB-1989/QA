@@ -34,7 +34,6 @@ def get_livres_db():
         livres = conn.execute("SELECT * FROM livres").fetchall()
         return livres
 
-
 def ajouter_livre_db(titre, auteur):
     with get_db_connection() as conn:
         conn.execute(

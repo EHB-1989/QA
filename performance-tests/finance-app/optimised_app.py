@@ -7,9 +7,6 @@ app = Flask(__name__)
 # app.config['CACHE_TYPE'] = 'RedisCache'
 # app.config['CACHE_REDIS_URL'] = 'redis://localhost:6379/0'
 
-app.config['CACHE_TYPE'] = 'simple'
-cache = Cache(app)
-
 cache = Cache(app)
 
 def generate_financial_report(company_id):
