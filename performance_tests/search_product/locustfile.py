@@ -2,6 +2,7 @@ from locust import HttpUser, task, between
 
 class ProductSearchUser(HttpUser):
     wait_time = between(1, 2)  # Temps d'attente entre les requêtes
+    host = "http://127.0.0.1:5000"
 
     @task
     def search_products(self):

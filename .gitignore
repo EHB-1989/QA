@@ -1,6 +1,4 @@
-test_*
 optimised_*
-locustfile*
 test_python_website.py
 old_*
 # except foo.html which is maintained by hand
@@ -25,3 +23,4 @@ performance-tests/finance-app/locustfile.py
 performance-tests/finance-app/optimised_app.py
 __pycache__/
 env
+vemv
