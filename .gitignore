@@ -1,7 +1,4 @@
-test_*
-optimised_*
-locustfile*
-test_python_website.py
+
 old_*
 # except foo.html which is maintained by hand
 **/test_compte_bancaire.py
@@ -12,16 +9,6 @@ test_integration_commerce_app.py
 test_integration_reservation_app.py
 test_integration_post_app.py
 test_integration_post_api.py
-
-test_python_website.py
-performance-tests/exemple_1/locustfile.py
-test_google_search.py
-test_e2e_events_page.py
-performance-tests/search_product/optimised_app.py
-performance-tests/search_product/locustfile.py
-performance-tests/weather_app/locustfile.py
-performance-tests/weather_app/optimised_app.py
-performance-tests/finance-app/locustfile.py
-performance-tests/finance-app/optimised_app.py
+env_test/
 __pycache__/
 env
