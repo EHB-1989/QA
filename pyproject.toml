@@ -18,6 +18,7 @@ dependencies = [
     "locust",
     "gunicorn",
     "waitress",
+    "flask_caching",
 ]
 
 [project.optional-dependencies]

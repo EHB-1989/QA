@@ -12,6 +12,8 @@ blinker==1.9.0
     # via flask
 brotli==1.1.0
     # via geventhttpclient
+cachelib==0.13.0
+    # via flask-caching
 certifi==2024.12.14
     # via
     #   geventhttpclient
@@ -31,11 +33,14 @@ configargparse==1.7
     # via locust
 flask==3.1.0
     # via
+    #   flask-caching
     #   flask-cors
     #   flask-login
     #   flask-sqlalchemy
     #   locust
     #   unittest1 (pyproject.toml)
+flask-caching==2.3.1
+    # via unittest1 (pyproject.toml)
 flask-cors==5.0.1
     # via locust
 flask-login==0.6.3
