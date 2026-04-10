@@ -18,6 +18,19 @@ Application minimale de gestion de bibliothèque : classes `Livre` (titre, auteu
 cd unit-tests && python3 -m unittest discover -v
 ```
 
-## Exercice 2 — Tests de performance
+Exercice 2 — Tests d’intégration (API Flask + SQLite)
+Dossier : integration-tests/
+
+Même métier (livres, emprunt, retour) exposé via une API HTTP Flask et une base SQLite (database_manager.py). Les tests d’intégration utilisent le client de test Flask et un fichier SQLite temporaire (BIBLIOTHEQUE_DB) pour ne pas écraser bibliotheque.db local et pour isoler chaque scénario.
+
+Prérequis : flask (ex. pip install flask).
+
+Lancer les tests :
+
+cd examen/integration-tests && python3 -m unittest discover -v
+
+
+Fichiers : app.py (routes), database_manager.py (persistance), test_integration_api.py (scénarios GET/POST et enchaînements).
+
 
 ## Exercice 3 — Tests d’intégration
