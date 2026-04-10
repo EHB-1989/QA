@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @lru_cache(maxsize=128)          # Cache en mémoire
 def get_user_from_db(user_id):
-    time.sleep(2)   
+    time.sleep(2)   # sans cache, chaque requête attend 2s et donc saturation rapide sous charge
     return (user_id, "User " + str(user_id), "user" + str(user_id) + "@example.com")
 
 @app.route('/user/<int:user_id>')
