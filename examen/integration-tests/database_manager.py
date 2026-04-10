@@ -1,12 +1,22 @@
 # database.py
 import sqlite3
+from contextlib import contextmanager
 
 DATABASE_NAME = "bibliotheque.db"
 
+@contextmanager
 def get_db_connection():
     conn = sqlite3.connect(DATABASE_NAME)
     conn.row_factory = sqlite3.Row
-    return conn
+    try:
+        yield conn
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        # On ferme explicitement la connexion pour éviter les verrous SQLite.
+        conn.close()
 
 def init_db():
     livres_default = [
